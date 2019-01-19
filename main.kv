@@ -1,0 +1,99 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+    transition: FadeTransition()
+    MainScreen:
+    UpScreen:
+    DownScreen:
+    RightScreen:
+    LeftScreen:
+
+<MainScreen>:
+    name: "menue"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Main screen!'
+            font_size: 30
+            color: .8,.9,0,1
+
+<UpScreen>:
+    name: "up"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Upscreen!'
+            font_size: 30
+        BoxLayout:
+            Button:
+                text: 'Zurück'
+                font_size: 30
+                on_release: app.root.current = 'menue'
+
+<DownScreen>:
+    name: "down"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            font_size: 30
+            text: "Runter"
+        BoxLayout:
+            Button:
+                text: 'Zurück'
+                font_size: 30
+                on_release: app.root.current = 'menue'
+
+<LeftScreen>:
+    name: "left"
+    GridLayout:
+        cols:2
+        orientation: 'vertical'
+        canvas.before:
+        #    Color:
+        #        hsv: (0,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: root.name_hour
+            font_size: 30
+
+
+<RightScreen>:
+    name: "right"
+    GridLayout:
+        cols: 1
+        orientation: "horizontal"
+        Label:
+            text: 'Themenname'
+            font_size: 30
+        TextInput:
+            text: "Text?"
+        Label:
+            text: "Stundenname"
+            font_size:30
+        TextInput:
+            text: "Text?"
+        Label:
+            text: "Dauer"
+            font_size:30
+        TextInput:
+            id: "drei"
+            name: "drei"
+            text: "Text?"
+        Label:
+            text: "Zahl der Elemente"
+            font_size:30
+        TextInput:
+            text: "Text?"
+        GridLayout:
+            cols: 2
+            orientation: "vertical"
+            Button:
+                text: 'Zurück'
+                font_size: 30
+                on_release: app.root.current = 'menue'
+            Button:
+                text: 'Speichern'
+                font_size: 30
+                on_release: root.buttonClicked()
